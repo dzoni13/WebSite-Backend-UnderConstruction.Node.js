@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\config",
+    "\\middleware",
+    "\\models",
+    "\\routes",
+    "\\routes\\api"
+  ],
+  "SelectedNode": "\\routes\\api\\menuItems.js",
+  "PreviewInSolutionExplorer": false
+}
