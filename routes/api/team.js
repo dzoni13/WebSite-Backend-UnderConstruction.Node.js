@@ -11,6 +11,7 @@ router.post("/", auth, async (req, res) => {
     const newItem = new Team({
       name: req.body.name,
       short_description: req.body.short_description,
+      description: req.body.description,
       image: req.body.image,
     });
     const team = await newItem.save();
@@ -22,7 +23,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 //http://localhost:5000/api/team  GET
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const team = await Team.find();
 
@@ -38,14 +39,6 @@ router.get("/", auth, async (req, res) => {
 //http://localhost:5000/api/team/id   PATCH
 router.patch("/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);
-  // const allowedUpdates = ["name", "short_description", "image"];
-  // const isValidOperation = updates.every((update) =>
-  //   allowedUpdates.includes(update)
-  // );
-  //
-  // if (!isValidOperation) {
-  //   return res.status(400).send({ error: "Invalid updates" });
-  // }
 
   try {
     const team = await Team.findOne({ _id: req.params.id });

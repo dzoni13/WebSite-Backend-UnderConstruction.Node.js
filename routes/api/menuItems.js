@@ -25,7 +25,7 @@ router.post("/", auth, async (req, res) => {
 });
 
 //http://localhost:5000/api/menuItem  GET
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const menuItem = await MenuItem.find();
 
@@ -90,7 +90,7 @@ router.delete("/:id", auth, async (req, res) => {
   }
 });
 
-router.get("/drinks", auth, async (req, res) => {
+router.get("/drinks", async (req, res) => {
   try {
     const menuItem = await MenuItem.find({ tag: "drinks" });
 
@@ -102,7 +102,7 @@ router.get("/drinks", auth, async (req, res) => {
     console.error(err.message);
   }
 });
-router.get("/appetizers", auth, async (req, res) => {
+router.get("/appetizers", async (req, res) => {
   try {
     const menuItem = await MenuItem.find({ tag: "appetizers" });
 
@@ -114,9 +114,21 @@ router.get("/appetizers", auth, async (req, res) => {
     console.error(err.message);
   }
 });
-router.get("/ala_carte", auth, async (req, res) => {
+router.get("/ala_carte", async (req, res) => {
   try {
     const menuItem = await MenuItem.find({ tag: "ala_carte" });
+
+    if (!menuItem) {
+      return res.status(400).json({ msg: "No item found." });
+    }
+    res.json(menuItem);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+router.get("/offer", async (req, res) => {
+  try {
+    const menuItem = await MenuItem.find({ tag: "offer" });
 
     if (!menuItem) {
       return res.status(400).json({ msg: "No item found." });

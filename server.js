@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./config/db");
+var cors = require("cors");
 
 const port = process.env.PORT || 5000;
 connectDB();
-
+app.use(cors());
 app.use(express.json({ extended: false }));
 
 app.use("/api/login", require("./routes/api/login"));

@@ -1,18 +1,24 @@
 const mongoose = require("mongoose");
 
 const ReservationSchema = new mongoose.Schema({
-  date: {
-    type: String,
-  },
-  time: {
-    type: String,
-  },
-  party_size: {
-    type: String,
-  },
-  mobile_number: {
-    type: String,
-  },
+    date: {
+        type: String,
+    },
+    time: {
+        type: String,
+    },
+    party_size: {
+        type: String,
+    },
+    mobile_number: {
+        type: String,
+    },
+    tag: {
+        type: String,
+    },
+    note: {
+        type: String,
+    },
 });
 
 module.exports = Reservation = mongoose.model("reservation", ReservationSchema);
